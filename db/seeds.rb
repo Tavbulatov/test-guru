@@ -6,21 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-categories = Category.create([{title: 'Математика'},
+categories = Category.create!([{title: 'Математика'},
                               {title: 'Фармакология'}
                               ])
 
-users = User.create([{name: 'Алихан'},
+users = User.create!([{name: 'Алихан'},
                      {name: 'Салимхан'}
                     ])
 
-tests = Test.create([{title: 'Сложение', category_id: categories[0].id, author_id: users[1].id },
+tests = Test.create!([{title: 'Сложение', category_id: categories[0].id, author_id: users[1].id },
                      {title: 'Вычитание', level: 1, category_id: categories[0].id, author_id: users[1].id},
                      {title: 'НПВС', category_id: categories[1].id, author_id: users[0].id},
                      {title: 'Противовирусные', level: 1, category_id: categories[1].id, author_id: users[0].id}
                      ])
 
-questions = Question.create([{body: '5 + 7 =', test_id: tests[0].id},
+questions = Question.create!([{body: '5 + 7 =', test_id: tests[0].id},
                               {body: '10 + 8 =', test_id: tests[0].id},
                               {body: '50-6-11 =', test_id: tests[1].id},
                               {body: '78-15-13', test_id: tests[1].id},
@@ -29,7 +29,7 @@ questions = Question.create([{body: '5 + 7 =', test_id: tests[0].id},
                               {body: 'В каком виде бывает Ацикловир ?', test_id: tests[3].id}
                               ])
 
-answers = Answer.create([{body: '12', correct: true, question_id: questions[0].id},
+answers = Answer.create!([{body: '12', correct: true, question_id: questions[0].id},
                          {body: '11', question_id: questions[0].id},
                          {body: '9', question_id: questions[0].id},
                          {body: '13', question_id: questions[0].id},
@@ -58,3 +58,9 @@ answers = Answer.create([{body: '12', correct: true, question_id: questions[0].i
                          {body: 'Гранулы', question_id: questions[6].id},
                          {body: 'Р-р для В/В', question_id: questions[6].id}
                          ])
+
+test_passages = TestPassage.create!([{user_id: users[1].id, test_id: tests[0].id},
+                                    {user_id: users[1].id, test_id: tests[1].id},
+                                    {user_id: users[0].id, test_id: tests[2].id},
+                                    {user_id: users[0].id, test_id: tests[3].id}
+                                    ])
