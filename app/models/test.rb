@@ -3,6 +3,6 @@ class Test < ApplicationRecord
     joins('JOIN categories on tests.category_id = categories.id')
       .where(categories: {title: category})
       .order(title: :desc)
-      .pluck(:tests.title)
+      .pluck(:title)
   end
 end
