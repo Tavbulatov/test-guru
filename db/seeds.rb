@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -57,7 +59,7 @@ answers = Answer.create!([{ body: '12', correct: true, question_id: questions[0]
                           { body: 'Гранулы', question_id: questions[6].id },
                           { body: 'Р-р для В/В', question_id: questions[6].id }])
 
-test_passages = TestPassage.create!([{ user_id: users[1].id, test_id: tests[0].id },
-                                     { user_id: users[1].id, test_id: tests[1].id },
-                                     { user_id: users[0].id, test_id: tests[2].id },
-                                     { user_id: users[0].id, test_id: tests[3].id }])
+test_passages = TestPassage.create!([{ user_id: users[0].id, test_id: tests[0].id },
+                                     { user_id: users[0].id, test_id: tests[1].id },
+                                     { user_id: users[1].id, test_id: tests[2].id },
+                                     { user_id: users[1].id, test_id: tests[3].id }])
