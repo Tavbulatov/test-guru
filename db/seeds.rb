@@ -11,8 +11,8 @@
 categories = Category.create!([{ title: 'Математика' },
                                { title: 'Фармакология' }])
 
-users = User.create!([{ name: 'Алихан' },
-                      { name: 'Салимхан' }])
+users = User.create!([{ name: 'Алихан', email: 'asdasd@mail.ru' },
+                      { name: 'Салимхан', email: 'qweqwe@mail.ru' }])
 
 tests = Test.create!([{ title: 'Сложение', category: categories[0], author: users[1] },
                       { title: 'Вычитание', level: 1, category: categories[0], author: users[1] },
