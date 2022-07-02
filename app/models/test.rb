@@ -8,10 +8,20 @@ class Test < ApplicationRecord
   belongs_to :category
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 
+  validates :title, presence: true, uniqueness: true, length: { maximum: 100 },
+  validates :level, uniqueness: true, numericality: { only_integer: true }
+
+  scope :easy, -> { where(level: 0..1) }
+  scope :middle, -> { where(level: 2..4) }
+  scope :difficult, -> { where(level: 5..Float::INFINITY) }
+
+  scope :sort_by_category_title, lambda { |category_name|
+                                    joins(:category)
+                                      .where(categories: { title: category_name })
+                                      .order(title: :desc)
+                                  }
+
   def self.tests_by_category_title(category_name)
-    joins(:category)
-      .where(categories: { title: category_name })
-      .order(title: :desc)
-      .pluck(:title)
+    sort_by_category_title(category_name).pluck(:title)
   end
 end
