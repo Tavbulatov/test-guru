@@ -8,7 +8,7 @@ class Test < ApplicationRecord
   belongs_to :category
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 
-  validates :title, presence: true, uniqueness: true, length: { maximum: 100 },
+  validates :title, presence: true, uniqueness: true, length: { maximum: 100 }
   validates :level, uniqueness: true, numericality: { only_integer: true }
 
   scope :easy, -> { where(level: 0..1) }
