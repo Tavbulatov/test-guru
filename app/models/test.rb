@@ -16,10 +16,10 @@ class Test < ApplicationRecord
   scope :difficult, -> { where(level: 5..Float::INFINITY) }
 
   scope :sort_by_category_title, lambda { |category_name|
-                                    joins(:category)
-                                      .where(categories: { title: category_name })
-                                      .order(title: :desc)
-                                  }
+                                   joins(:category)
+                                     .where(categories: { title: category_name })
+                                     .order(title: :desc)
+                                 }
 
   def self.tests_by_category_title(category_name)
     sort_by_category_title(category_name).pluck(:title)
