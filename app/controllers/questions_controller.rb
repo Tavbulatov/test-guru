@@ -27,7 +27,9 @@ class QuestionsController < ApplicationController
     @question_test = Test.find(@question.test_id)
   end
 
-  def edit; end
+  def edit
+    @question_test = Test.find(@question.test_id)
+  end
 
   def update
     if @question.update(question_params)
