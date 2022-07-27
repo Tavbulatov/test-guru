@@ -1,9 +1,9 @@
-<h2>Test: <%= @question_test.title%></h2>
+<h2>Test: <%= @question.test.title%></h2>
 <h2>Body:</h2>
 
 <p><%= @question.body%></p>
 
 <p>
   <%= link_to 'Home', tests_path%> ||
-  <%= link_to 'Back', test_path(@question_test)%>
+  <%= link_to 'Back', test_path(@question.test)%>
 </p>

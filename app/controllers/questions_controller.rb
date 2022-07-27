@@ -10,12 +10,10 @@ class QuestionsController < ApplicationController
 
   def new
     @question = @test.questions.new
-    @question_test = @test.id
   end
 
   def create
     @question = @test.questions.new(question_params)
-    @question_test = @test.id
     if @question.save
       redirect_to @question
     else
@@ -23,13 +21,9 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def show
-    @question_test = Test.find(@question.test_id)
-  end
+  def show; end
 
-  def edit
-    @question_test = Test.find(@question.test_id)
-  end
+  def edit; end
 
   def update
     if @question.update(question_params)
@@ -41,8 +35,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    @question_test = Test.find(@question.test_id)
-    redirect_to test_path(@question_test)
+    redirect_to test_path(@question.test)
   end
 
   private
