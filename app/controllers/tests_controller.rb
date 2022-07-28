@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 class TestsController < ApplicationController
+  before_action :find_test, only: %i[show update edit destroy]
+
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
     @tests = Test.all
   end
 
-  def show
-    @test = Test.find(params[:id])
-    @questions = @test.questions
-  end
+  def show; end
 
   def new
     @test = Test.new
@@ -26,13 +25,9 @@ class TestsController < ApplicationController
     end
   end
 
-  def edit
-    @test = Test.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @test = Test.find(params[:id])
-
     if @test.update(test_params)
       redirect_to @test
     else
@@ -41,12 +36,15 @@ class TestsController < ApplicationController
   end
 
   def destroy
-    @test = Test.find(params[:id])
     @test.destroy
     redirect_to tests_path
   end
 
   private
+
+  def find_test
+    @test = Test.find(params[:id])
+  end
 
   def test_params
     params.require(:test).permit(:title, :level, :category_id, :author_id)

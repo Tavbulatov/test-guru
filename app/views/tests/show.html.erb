@@ -5,11 +5,9 @@
     <th colspa = "3">Action</th>
   </tr>
 
-  <%= render @questions%>
+  <%= render @test.questions%>
 </table>
 
 <p><%= link_to 'New question', new_test_question_path(@test)%></p>
 
-<p>
-<%= link_to 'Back', tests_path%>
-</p>
+<p><%= link_to 'Back', tests_path%></p>
